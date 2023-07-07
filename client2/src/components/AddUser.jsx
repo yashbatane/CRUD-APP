@@ -3,6 +3,9 @@ import { FormControl, FormGroup, InputLabel, Input, Typography, styled, Button} 
 // import Input --> taking input from the user 
 import { addUser } from '../service/api';
 
+// useNavigate use for if we click on somewhere and we have to go on the other page...
+import { useNavigate } from 'react-router-dom';
+
 const Container = styled(FormGroup)`
     width: 50%;
     margin:7% auto 0 auto;
@@ -11,7 +14,6 @@ const Container = styled(FormGroup)`
     }
 `
 // In Css we use &> for formcontrol style it is the way in react to style the innerchild with the help of parent
-
 
 // creating an object
 const defaultValue ={
@@ -23,6 +25,8 @@ phone: ''
 const AddUser = () =>{
 
     const [user,setUser] = useState(defaultValue); //user me default object pda rahega
+
+    const navigate=useNavigate(); //initialize navigate..
 
 const onValueChange=(e)=>{
     console.log(e.target.name , e.target.value);
@@ -36,6 +40,8 @@ const addUserDetails=async()=>{
 //    var temp  =  addUser();
 //    console.log(temp);
     await addUser(user);
+
+    navigate('/all');   // button pr click krte hi all user wale component pr chale jayega..
 }
 
 // Here e is an event where we take the value which we enter in the input field (e.target.value --> take the value , e.target.name --> it gives the whose value it is)

@@ -8,11 +8,11 @@ const userSchema = mongoose.Schema({
     name:String,
     username:String,
     email:String,
-    phone:String
+    phone:Number
 })
 
 autoIncrement.initialize(mongoose.connection);
-// userSchema.plugin(autoIncrement.plugin,'userSchema');
+ //userSchema.plugin(autoIncrement.plugin,'user');
 
 const user=mongoose.model('user',userSchema);
 export default user;
